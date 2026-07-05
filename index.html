@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Scenic Lawns LLC | Professional Lawn Care in Ogden, UT</title>
+<meta name="description" content="Scenic Lawns LLC delivers reliable lawn mowing, fertilization, aeration & landscaping in Ogden, UT. Locally owned, free estimates. Call (385) 626-1905.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Scenic Lawns LLC | Lawn Care in Ogden, UT">
+<meta property="og:description" content="Ogden's trusted lawn care team — mowing, fertilization, aeration, cleanups & landscaping. Locally owned and operated. Free estimates.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/logo.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+:root {
+  /* Primary brand color — buttons, links, CTAs, icon fills */
+  --brand-green:       #ffff00;
+  --brand-green-dark:  #c2c200;
+  --brand-green-light: #ffff47;
+  --brand-green-tint:  rgba(255,255,0,0.12);
+
+  /* Secondary / accent color — badge text/borders, outline buttons, nav active state */
+  --brand-blue:        #3470b2;
+  --brand-blue-dark:   #28578a;
+  --brand-blue-light:  #6197d1;
+  --brand-blue-tint:   #f0f2f5;
+
+  /* Section alternate background — very light tint of the primary hue */
+  --bg-alt: #f8f8f6;
+
+  /* Dark section backgrounds (gallery, footer) — always very dark for readability.
+     Derived from the primary hue so they stay on-brand, but forced to near-black
+     lightness so a vivid secondary never bleeds into major background areas. */
+  --dark:      #31310e;
+  --dark-card: #27270e;
+}
+</style>
+</head>
+<body>
+<!-- ==============================================================
+  PREVIEW OVERLAY — Remove this entire block (from this comment
+  to END PREVIEW OVERLAY) once the site has been purchased and
+  handed off to the client.
+  ============================================================== -->
+<style>
+  #preview-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 14, 26, 0.93);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 24px;
+  }
+  #preview-modal {
+    background: #ffffff;
+    border-radius: 18px;
+    max-width: 560px;
+    width: 100%;
+    padding: 52px 48px 44px;
+    box-shadow: 0 32px 96px rgba(0,0,0,0.55);
+    text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  #preview-modal h2 {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 14px;
+    line-height: 1.3;
+  }
+  #preview-modal > p {
+    color: #475569;
+    font-size: 0.97rem;
+    line-height: 1.6;
+    margin: 0 0 20px;
+  }
+  #preview-modal ul {
+    text-align: left;
+    margin: 0 0 32px;
+    padding-left: 22px;
+    color: #334155;
+    font-size: 0.93rem;
+    line-height: 1.75;
+  }
+  #preview-modal ul li { margin-bottom: 6px; }
+  #preview-close-btn {
+    display: block;
+    width: 100%;
+    background: var(--brand-green, #16a34a);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 36px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    margin-bottom: 14px;
+    transition: opacity 0.2s;
+  }
+  #preview-close-btn:hover { opacity: 0.88; }
+  #preview-hint {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin: 0;
+  }
+  #preview-help-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 99998;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: var(--brand-green, #16a34a);
+    color: #ffffff;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.28);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+  #preview-help-btn:hover { opacity: 0.88; transform: scale(1.08); }
+</style>
+
+<div id="preview-overlay" role="dialog" aria-modal="true" aria-labelledby="preview-title">
+  <div id="preview-modal">
+    <h2 id="preview-title">Thank you for taking the time to check out the website I made for your business!</h2>
+    <p>Here are a couple of things to keep in mind while viewing the site:</p>
+    <ul>
+      <li>All images are placeholders and will be changed at your request.</li>
+      <li>All reviews are also placeholders and will be replaced with your real business reviews.</li>
+      <li>Any text will be edited at your request.</li>
+      <li>Any custom build you require will be done at your request.</li>
+    </ul>
+    <button id="preview-close-btn" type="button">View my Site</button>
+    <p id="preview-hint">Press the <strong>?</strong> after viewing your site for more information.</p>
+  </div>
+</div>
+
+<button id="preview-help-btn" type="button" aria-label="View site preview information">?</button>
+
+<script>
+  /* Preview overlay — inline after elements so getElementById works immediately */
+  (function () {
+    var overlay = document.getElementById('preview-overlay');
+    var closeBtn = document.getElementById('preview-close-btn');
+    var helpBtn  = document.getElementById('preview-help-btn');
+    if (!overlay || !closeBtn || !helpBtn) return;
+    closeBtn.addEventListener('click', function () { overlay.style.display = 'none'; });
+    helpBtn.addEventListener('click',  function () { overlay.style.display = 'flex'; });
+  })();
+</script>
+<!-- END PREVIEW OVERLAY -->
+
+
+<header id="navbar">
+  <div class="nav-inner container">
+    <a href="#hero" class="nav-logo">
+      <img src="assets/logo.png" alt="Scenic Lawns LLC logo" style="max-height:50px;width:auto">
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="tel:3856261905" class="nav-cta btn btn-primary">Call (385) 626-1905</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:3856261905" class="btn btn-primary">Call (385) 626-1905</a>
+  </div>
+</header>
+
+<section id="hero">
+  <div class="hero-bg">
+    <img src="assets/hero.jpg" alt="Freshly mowed, lush green lawn with crisp striping in a residential Ogden yard">
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-content container">
+    <span class="hero-badge">Locally Owned &amp; Operated in Ogden, UT</span>
+    <h1>Ogden's Go-To Team for a <span class="gradient-text">Healthier, Greener Lawn</span></h1>
+    <p>Reliable mowing, fertilization, and full-service lawn care for homes and businesses across Ogden — done right, every time.</p>
+    <div class="hero-actions">
+      <a href="tel:3856261905" class="btn btn-primary">Call (385) 626-1905</a>
+      <a href="#contact" class="btn btn-outline-white">Get a Free Estimate</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-value"><span class="count" data-target="6">6</span></span>
+        <span class="hero-stat-caption">Services Offered</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-value"><span class="count" data-target="4.9">4.9</span><span class="unit">★</span></span>
+        <span class="hero-stat-caption">Average Google Rating</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-value"><span class="count" data-target="100">100</span><span class="unit">%</span></span>
+        <span class="hero-stat-caption">Free Estimates</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="badge">What We Do</span>
+      <h2>Full-Service Lawn Care for Ogden Properties</h2>
+      <p>From weekly mowing to seasonal cleanups, we keep your lawn looking sharp all year long.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <h3>Lawn Mowing &amp; Maintenance</h3>
+        <p>Weekly and bi-weekly mowing, edging, trimming, and blowing to keep your yard consistently clean and healthy. We adjust our schedule with the seasons so your lawn always gets what it needs.</p>
+      </div>
+      <div class="service-card reveal delay-1">
+        <h3>Fertilization &amp; Weed Control</h3>
+        <p>Custom fertilization programs and targeted weed treatments that build thicker, greener turf while keeping dandelions and crabgrass out of the picture.</p>
+      </div>
+      <div class="service-card reveal delay-2">
+        <h3>Aeration &amp; Overseeding</h3>
+        <p>Core aeration relieves compacted soil so water, air, and nutrients reach the roots, and overseeding fills in thin or bare patches for a fuller lawn.</p>
+      </div>
+      <div class="service-card reveal delay-3">
+        <h3>Spring &amp; Fall Cleanups</h3>
+        <p>Leaf removal, bed cleanup, and seasonal prep that gets your property ready for growing season or winterized before the cold hits.</p>
+      </div>
+      <div class="service-card reveal delay-4">
+        <h3>Landscaping &amp; Mulch</h3>
+        <p>Fresh mulch installation, bed edging, and general landscape tidying that adds curb appeal and keeps your outdoor space looking polished.</p>
+      </div>
+      <div class="service-card reveal delay-5">
+        <h3>Sprinkler &amp; Irrigation Checks</h3>
+        <p>Seasonal irrigation start-up, adjustments, and troubleshooting so every zone of your lawn gets even, efficient watering.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-img-wrap reveal">
+      <img src="assets/about.jpg" alt="Scenic Lawns crew member trimming a lawn edge along a driveway in Ogden">
+    </div>
+    <div class="about-content reveal delay-1">
+      <span class="badge">About Scenic Lawns</span>
+      <h2>Locally Owned. Dependable. Detail-Focused.</h2>
+      <p>Scenic Lawns LLC is a locally owned and operated lawn care company serving Ogden, UT and the surrounding areas. We built our business on showing up when we say we will, doing the work right the first time, and treating every yard like it's our own.</p>
+      <p>Whether you need a simple weekly mow or a full lawn health program, our crew brings the same attention to detail to every property — big or small. We believe a well-kept lawn says a lot about a home, and we take pride in helping our neighbors put their best foot forward.</p>
+      <p>No pushy sales pitches, no surprise fees — just dependable, professional service and a team that actually picks up the phone.</p>
+      <a href="#contact" class="btn btn-outline">Get Your Free Estimate</a>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <div class="section-head light reveal">
+      <span class="badge">Our Work</span>
+      <h2>See the Scenic Lawns Difference</h2>
+      <p>A look at the kind of clean, healthy lawns and outdoor spaces our team works hard to deliver.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal" data-idx="0">
+        <img src="assets/gallery-photos/gallery-00.jpg" alt="Professional lawn care crew at work on a residential property" loading="lazy">
+      </div>
+      <div class="gallery-item reveal delay-1" data-idx="1">
+        <img src="assets/gallery-photos/gallery-01.jpg" alt="Freshly mowed lawn with clean, crisp edging along a walkway" loading="lazy">
+      </div>
+      <div class="gallery-item reveal delay-2" data-idx="2">
+        <img src="assets/gallery-photos/gallery-02.jpg" alt="Landscaper trimming shrubs and hedges in a front yard" loading="lazy">
+      </div>
+      <div class="gallery-item reveal delay-3" data-idx="3">
+        <img src="assets/gallery-photos/gallery-03.jpg" alt="Lawn mower cutting neat stripes into a green lawn" loading="lazy">
+      </div>
+      <div class="gallery-item reveal delay-4" data-idx="4">
+        <img src="assets/gallery-photos/gallery-04.jpg" alt="Close-up of healthy, thick green grass after treatment" loading="lazy">
+      </div>
+      <div class="gallery-item reveal delay-5" data-idx="5">
+        <img src="assets/gallery-photos/gallery-05.jpg" alt="Lawn care truck and equipment parked at a job site" loading="lazy">
+      </div>
+      <div class="gallery-item reveal" data-idx="6">
+        <img src="assets/gallery-photos/gallery-06.jpg" alt="Freshly installed mulch bed along a home's front landscaping" loading="lazy">
+      </div>
+      <div class="gallery-item reveal delay-1" data-idx="7">
+        <img src="assets/gallery-photos/gallery-07.jpg" alt="Backyard lawn with clean mowing lines and trimmed borders" loading="lazy">
+      </div>
+      <div class="gallery-item reveal delay-2" data-idx="8">
+        <img src="assets/gallery-photos/gallery-08.jpg" alt="Crew member blowing grass clippings off a driveway after mowing" loading="lazy">
+      </div>
+    </div>
+    <div class="gallery-footer">
+      <button type="button" class="btn btn-outline-white" id="galleryViewMore">View More Photos</button>
+    </div>
+  </div>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image gallery">
+    <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+    <button class="lb-prev" id="lbPrev" aria-label="Previous">&#8249;</button>
+    <div class="lb-img-wrap"><img src="" alt="" id="lbImg"></div>
+    <button class="lb-next" id="lbNext" aria-label="Next">&#8250;</button>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="badge">Google Reviews</span>
+      <h2>What Our Customers Say</h2>
+      <div class="overall-rating">
+        <div class="big-stars">★★★★★</div>
+        <div class="rating-info">
+          <span class="rating-num">4.9</span>
+          <span class="rating-label">Average Google Rating</span>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-top">
+          <div class="reviewer-avatar" style="--av-color:#048d46">MH</div>
+          <div class="reviewer-meta">
+            <strong>Melissa Hansen</strong>
+            <span>Local Guide · 24 reviews</span>
+          </div>
+          <svg class="google-g" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-body">
+          <p class="review-text">Scenic Lawns has been mowing our yard on Harrison Blvd for a couple months now and it's night and day compared to what we were doing ourselves. They edge every single visit and always close the gate behind them. Highly recommend.</p>
+          <button class="review-toggle" type="button" hidden>See more</button>
+        </div>
+        <time>2 weeks ago</time>
+      </div>
+      <div class="review-card reveal delay-1">
+        <div class="review-top">
+          <div class="reviewer-avatar" style="--av-color:#1870ab">DR</div>
+          <div class="reviewer-meta">
+            <strong>Derek Reyes</strong>
+            <span>9 reviews</span>
+          </div>
+          <svg class="google-g" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-body">
+          <p class="review-text">Had them come out for a fall cleanup and aeration before winter hit. Showed up on time, hauled away every leaf, and the price was fair. Already scheduled them for spring overseeding.</p>
+          <button class="review-toggle" type="button" hidden>See more</button>
+        </div>
+        <time>4 months ago</time>
+      </div>
+      <div class="review-card reveal delay-2">
+        <div class="review-top">
+          <div class="reviewer-avatar" style="--av-color:#8b5a2b">TN</div>
+          <div class="reviewer-meta">
+            <strong>Tracy Nielsen</strong>
+            <span>Local Guide · 41 reviews · 12 photos</span>
+          </div>
+          <svg class="google-g" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-body">
+          <p class="review-text">We switched to Scenic Lawns after our old company kept skipping weeks. It's been a year of consistent, on-schedule mowing and our lawn has never looked better. They even flagged a broken sprinkler head for us. Great communication too.</p>
+          <button class="review-toggle" type="button" hidden>See more</button>
+        </div>
+        <time>a year ago</time>
+      </div>
+    </div>
+    <div class="reviews-footer">
+      <a href="https://www.google.com/maps/search/Scenic+Lawns+LLC+Ogden+UT" target="_blank" rel="noopener" class="btn btn-google">
+        <svg class="google-g" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Leave Us a Review
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="badge">Get In Touch</span>
+      <h2>Request Your Free Estimate</h2>
+      <p>Tell us a little about your property and we'll get back to you with a straightforward quote — no obligation.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="contact-item">
+          <span class="ci-icon">📞</span>
+          <div>
+            <strong>Phone</strong>
+            <a href="tel:3856261905">(385) 626-1905</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="ci-icon">📍</span>
+          <div>
+            <strong>Address</strong>
+            <span>3517 Grant Ave, Ogden, UT 84401</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="ci-icon">🕑</span>
+          <div>
+            <strong>Hours</strong>
+            <span>Mon–Fri: 8am–6pm<br>Sat: 9am–4pm<br>Sun: Closed</span>
+          </div>
+        </div>
+        <div class="map-wrap">
+          <iframe src="https://maps.google.com/maps?q=Ogden+UT&t=&z=11&ie=UTF8&iwloc=&output=embed" width="100%" height="300" style="border:0" allowfullscreen="" loading="lazy" title="Scenic Lawns LLC service area map"></iframe>
+        </div>
+      </div>
+      <form class="contact-form reveal delay-1" action="#" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(385) 555-0123" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="service">Service Needed</label>
+          <select id="service" name="service">
+            <option>Lawn Mowing &amp; Maintenance</option>
+            <option>Fertilization &amp; Weed Control</option>
+            <option>Aeration &amp; Overseeding</option>
+            <option>Spring / Fall Cleanup</option>
+            <option>Landscaping &amp; Mulch</option>
+            <option>Sprinkler &amp; Irrigation Check</option>
+            <option>Something Else</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Tell Us About Your Property</label>
+          <textarea id="message" name="message" rows="4" placeholder="Lawn size, current condition, what you're looking for..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Request Free Estimate</button>
+        <p class="form-success" hidden>Thanks! We'll be in touch shortly to schedule your free estimate.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="Scenic Lawns LLC logo" style="max-height:60px;width:auto;margin-bottom:8px">
+        <p>Locally owned and operated lawn care serving Ogden, UT and the surrounding areas.</p>
+      </div>
+      <nav class="footer-nav">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer-hours">
+        <h4>Business Hours</h4>
+        <table>
+          <tr><td>Mon – Fri</td><td>8:00am – 6:00pm</td></tr>
+          <tr><td>Saturday</td><td>9:00am – 4:00pm</td></tr>
+          <tr><td>Sunday</td><td>Closed</td></tr>
+        </table>
+      </div>
+      <div class="footer-cta-box">
+        <h4>Ready to get started?</h4>
+        <p>Call us today for your free, no-obligation estimate.</p>
+        <a href="tel:3856261905" class="btn btn-primary">Call (385) 626-1905</a>
+        <a href="#contact" class="btn btn-outline-white">Get a Quote</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Scenic Lawns LLC — All rights reserved.</p>
+      <p>Serving Ogden &amp; surrounding areas</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
